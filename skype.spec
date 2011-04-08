@@ -12,6 +12,8 @@ URL:		http://www.skype.com
 Source0:	http://download.skype.com/linux/%{name}-%{version}-fedora.i586.rpm
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+BuildRequires:	desktop-file-utils
+
 ExclusiveArch:	i586
 
 
