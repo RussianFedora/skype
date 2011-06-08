@@ -12,6 +12,8 @@ URL:		http://www.skype.com
 Source0:	http://download.skype.com/linux/%{name}-%{version}-fedora.i586.rpm
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+BuildRequires:	desktop-file-utils
+
 ExclusiveArch:	i586
 
 
@@ -93,6 +95,7 @@ rm -rf %{buildroot}
 %changelog
 * Mon Jul  6 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-1
 - update to 2.2.0.35
+- added BR: desktop-file-utils
 
 * Thu Apr  7 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.25-1
 - update to 2.2.0.25
