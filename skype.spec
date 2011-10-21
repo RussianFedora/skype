@@ -4,7 +4,7 @@
 Summary:	Free Internet telephony that just works
 Name:		skype
 Version:	2.2.0.35
-Release:	1
+Release:	2.R
 
 Group:		Applications/Internet
 License:	Proprietary
@@ -13,6 +13,9 @@ Source0:	http://download.skype.com/linux/%{name}-%{version}-fedora.i586.rpm
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	desktop-file-utils
+
+# requires pulseaudio-libs.i686
+Requires:	/usr/lib/libpulse.so.0
 
 ExclusiveArch:	i586
 
@@ -93,6 +96,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sat Oct 22 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-2
+- let's try to require /usr/lib/libpulse.so.0
+
 * Mon Jul  6 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-1
 - update to 2.2.0.35
 - added BR: desktop-file-utils
