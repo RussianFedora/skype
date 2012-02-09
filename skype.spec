@@ -4,12 +4,15 @@
 Summary:	Free Internet telephony that just works
 Name:		skype
 Version:	2.2.0.35
-Release:	2.R
+Release:	3%{?dist}.R
 
 Group:		Applications/Internet
 License:	Proprietary
 URL:		http://www.skype.com
 Source0:	http://download.skype.com/linux/%{name}-%{version}-fedora.i586.rpm
+%if 0%{?rhel} < 7
+Source1:        http://download.skype.com/linux/%{name}_static-%{version}.tar.bz2
+%endif
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	desktop-file-utils
@@ -46,6 +49,14 @@ mkdir -p %{buildroot}
 pushd %{buildroot}
 rpm2cpio %{SOURCE0} | cpio -idV --quiet
 popd
+
+%if 0%{?rhel} < 7
+pushd %{buildroot}
+tar xaf %{SOURCE1}
+mv %{name}_static-%{version}/%{name} %{buildroot}%{_bindir}
+rm -rf %{name}_static-%{version}
+popd
+%endif
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
 mv %{buildroot}%{_datadir}/icons/skype.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/skype.png
@@ -96,6 +107,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Feb  9 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-3.R
+- use static skype for EL6
+
 * Sat Oct 22 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-2
 - let's try to require /usr/lib/libpulse.so.0
 
