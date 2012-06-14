@@ -57,8 +57,8 @@ popd
 %if %{defined rhel} && 0%{?rhel} < 7
 pushd %{buildroot}
 tar xaf %{SOURCE1}
-mv %{name}_static-%{version}/%{name} %{buildroot}%{_bindir}
-rm -rf %{name}_static-%{version}
+mv %{name}_staticQT-%{version}/%{name} %{buildroot}%{_bindir}
+rm -rf %{name}_staticQT-%{version}
 popd
 %endif
 
