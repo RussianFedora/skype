@@ -4,7 +4,7 @@
 Summary:	Free Internet telephony that just works
 Name:		skype
 Version:	4.0.0.7
-Release:	1%{?dist}
+Release:	2.R
 
 Group:		Applications/Internet
 License:	Proprietary
@@ -107,6 +107,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Jun 14 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.0.0.7-2.R
+- bump release
+
 * Thu Jun 14 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.0.0.7-1.R
 - update to 4.0.0.7
 
