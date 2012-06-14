@@ -24,6 +24,8 @@ BuildRequires:	desktop-file-utils
 # requires pulseaudio-libs.i686
 Requires:	/usr/lib/libpulse.so.0
 
+Provides:	libtiff.so.4
+
 ExclusiveArch:	i586
 
 
@@ -75,6 +77,10 @@ desktop-file-install --vendor rfremix \
   --delete-original				\
   %{buildroot}%{_datadir}/applications/%{name}.desktop
 
+mkdir -p %{buildroot}%{_libdir}
+pushd %{buildroot}%{_libdir}
+ln -sf libtiff.so.3 libtiff.so.4
+popd
 
 %post
 update-desktop-database &> /dev/null || :
@@ -104,6 +110,7 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/skype.conf
 %config(noreplace) %{_sysconfdir}/prelink.conf.d/skype.conf
 %{_bindir}/%{name}
+%{_libdir{/libtiff.so.4
 %{_datadir}/%{name}
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/applications/*.desktop
