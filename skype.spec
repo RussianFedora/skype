@@ -110,7 +110,7 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/skype.conf
 %config(noreplace) %{_sysconfdir}/prelink.conf.d/skype.conf
 %{_bindir}/%{name}
-%{_libdir{/libtiff.so.4
+%{_libdir}/libtiff.so.4
 %{_datadir}/%{name}
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/applications/*.desktop
