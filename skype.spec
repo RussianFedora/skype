@@ -5,7 +5,7 @@ Summary:	Free Internet telephony that just works
 Name:		skype
 Version:	4.0.0.7
 %if %{defined rhel} && 0%{?rhel} < 7
-Release:	2%{?dist}.R
+Release:	2%{?dist}
 %else
 Release:	2.R
 %endif
