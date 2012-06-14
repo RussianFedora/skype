@@ -3,14 +3,14 @@
 
 Summary:	Free Internet telephony that just works
 Name:		skype
-Version:	2.2.0.35
-Release:	3%{?dist}.R
+Version:	4.0.0.7
+Release:	1%{?dist}
 
 Group:		Applications/Internet
 License:	Proprietary
 URL:		http://www.skype.com
 Source0:	http://download.skype.com/linux/%{name}-%{version}-fedora.i586.rpm
-%if 0%{?rhel} < 7
+%if %{defined rhel} && 0%{?rhel} < 7
 Source1:        http://download.skype.com/linux/%{name}_static-%{version}.tar.bz2
 %endif
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -50,7 +50,7 @@ pushd %{buildroot}
 rpm2cpio %{SOURCE0} | cpio -idV --quiet
 popd
 
-%if 0%{?rhel} < 7
+%if %{defined rhel} && 0%{?rhel} < 7
 pushd %{buildroot}
 tar xaf %{SOURCE1}
 mv %{name}_static-%{version}/%{name} %{buildroot}%{_bindir}
@@ -107,6 +107,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Jun 14 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.0.0.7-1.R
+- update to 4.0.0.7
+
 * Thu Feb  9 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-3.R
 - use static skype for EL6
 
