@@ -5,9 +5,9 @@ Summary:	Free Internet telephony that just works
 Name:		skype
 Version:	4.0.0.7
 %if %{defined rhel} && 0%{?rhel} < 7
-Release:	2%{?dist}
+Release:	3%{?dist}
 %else
-Release:	2.R
+Release:	3.R
 %endif
 
 Group:		Applications/Internet
@@ -23,6 +23,10 @@ BuildRequires:	desktop-file-utils
 
 # requires pulseaudio-libs.i686
 Requires:	/usr/lib/libpulse.so.0
+
+%if %{defined rhel} && 0%{?rhel} < 7
+Requires:	/usr/lib/libtiff.so.3
+%endif
 
 Provides:	libtiff.so.4
 
@@ -118,6 +122,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Fri Jun 15 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.0.0.7-3.R
+- added R: /usr/lib/libtiff.so.3 for rhel
+
 * Thu Jun 14 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.0.0.7-2.R
 - bump release
 
