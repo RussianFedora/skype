@@ -3,11 +3,11 @@
 
 Summary:	Free Internet telephony that just works
 Name:		skype
-Version:	4.0.0.7
+Version:	4.0.0.8
 %if %{defined rhel} && 0%{?rhel} < 7
-Release:	3%{?dist}
+Release:	1%{?dist}
 %else
-Release:	3.R
+Release:	1.R
 %endif
 
 Group:		Applications/Internet
@@ -122,6 +122,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Jul 18 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.0.0.8-1.R
+- update to 4.0.0.8
+
 * Fri Jun 15 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.0.0.7-3.R
 - added R: /usr/lib/libtiff.so.3 for rhel
 
