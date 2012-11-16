@@ -3,7 +3,7 @@
 
 Summary:	Free Internet telephony that just works
 Name:		skype
-Version:	4.0.0.8
+Version:	4.1.0.20
 %if %{defined rhel} && 0%{?rhel} < 7
 Release:	1%{?dist}
 %else
@@ -122,6 +122,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Fri Nov 16 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.1.0.20-1.R
+- update dynamic to 4.1.0.20
+
 * Wed Jul 18 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.0.0.8-1.R
 - update to 4.0.0.8
 
