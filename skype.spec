@@ -5,15 +5,16 @@ Summary:	Free Internet telephony that just works
 Name:		skype
 Version:	4.1.0.20
 %if %{defined rhel} && 0%{?rhel} < 7
-Release:	1%{?dist}
+Release:	2%{?dist}
 %else
-Release:	1.R
+Release:	2.R
 %endif
 
 Group:		Applications/Internet
 License:	Proprietary
 URL:		http://www.skype.com
 Source0:	http://download.skype.com/linux/%{name}-%{version}-fedora.i586.rpm
+Source1:	%{name}.sh
 %if %{defined rhel} && 0%{?rhel} < 7
 Source1:        http://download.skype.com/linux/%{name}_static-%{version}.tar.bz2
 %endif
@@ -71,6 +72,9 @@ popd
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
 mv %{buildroot}%{_datadir}/icons/skype.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/skype.png
 
+mv %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}-bin
+install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/%{name} 
+
 sed -i 's!Icon=skype.png!Icon=skype!g' %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 desktop-file-install --vendor rfremix \
@@ -114,6 +118,7 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/skype.conf
 %config(noreplace) %{_sysconfdir}/prelink.conf.d/skype.conf
 %{_bindir}/%{name}
+%{_bindir}/%{name}-bin
 %{_libdir}/libtiff.so.4
 %{_datadir}/%{name}
 %{_datadir}/pixmaps/%{name}.png
@@ -122,6 +127,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sat May 11 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.1.0.20-2.R
+- LD_PRELOAD libGL.so.1 to use with NVIDIA
+
 * Fri Nov 16 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.1.0.20-1.R
 - update dynamic to 4.1.0.20
 
@@ -145,7 +153,6 @@ rm -rf %{buildroot}
 
 * Mon Jul  6 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-1
 - update to 2.2.0.35
-- added BR: desktop-file-utils
 
 * Thu Apr  7 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.25-1
 - update to 2.2.0.25
