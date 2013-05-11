@@ -127,7 +127,7 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Sat May 13 2013 Arkady L. Shane <ashejn@yandex-team.ru> - 4.1.0.20-2.R
+* Sat May 11 2013 Arkady L. Shane <ashejn@yandex-team.ru> - 4.1.0.20-2.R
 - LD_PRELOAD libGL.so.1 to use with NVIDIA
 
 * Fri Nov 16 2012 Arkady L. Shane <ashejn@yandex-team.ru> - 4.1.0.20-1.R
