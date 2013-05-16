@@ -5,9 +5,9 @@ Summary:	Free Internet telephony that just works
 Name:		skype
 Version:	4.1.0.20
 %if %{defined rhel} && 0%{?rhel} < 7
-Release:	2%{?dist}
+Release:	3%{?dist}
 %else
-Release:	2.R
+Release:	3.R
 %endif
 
 Group:		Applications/Internet
@@ -90,6 +90,9 @@ pushd %{buildroot}%{_libdir}
 ln -sf libtiff.so.3 libtiff.so.4
 popd
 
+sed -i 's!skype!skype-bin!g' \
+	%{buildroot}%{_sysconfdir}/prelink.conf.d/skype.conf
+
 %post
 update-desktop-database &> /dev/null || :
 touch --no-create /usr/share/icons/hicolor &>/dev/null || :
@@ -127,6 +130,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Fri May 17 2013 Arkady L. Shane <ashejn@yandex-team.ru> - 4.1.0.20-3.R
+- prelink another binary
+
 * Sat May 11 2013 Arkady L. Shane <ashejn@yandex-team.ru> - 4.1.0.20-2.R
 - LD_PRELOAD libGL.so.1 to use with NVIDIA
 
