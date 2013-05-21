@@ -3,11 +3,11 @@
 
 Summary:	Free Internet telephony that just works
 Name:		skype
-Version:	4.1.0.20
+Version:	4.2.0.11
 %if %{defined rhel} && 0%{?rhel} < 7
-Release:	3%{?dist}
+Release:	1%{?dist}
 %else
-Release:	3.R
+Release:	1.R
 %endif
 
 Group:		Applications/Internet
@@ -69,9 +69,6 @@ rm -rf %{name}_staticQT-%{version}
 popd
 %endif
 
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
-mv %{buildroot}%{_datadir}/icons/skype.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/skype.png
-
 mv %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}-bin
 install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/%{name} 
 
@@ -130,6 +127,10 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Tue May 21 2013 Arkady L. Shane <ashejn@russianfedora.ru> - 4.2.0.11-1.R
+- update to 4.2.0.11
+- fix bogus date
+
 * Fri May 17 2013 Arkady L. Shane <ashejn@yandex-team.ru> - 4.1.0.20-3.R
 - prelink another binary
 
@@ -157,7 +158,7 @@ rm -rf %{buildroot}
 * Sat Oct 22 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-2
 - let's try to require /usr/lib/libpulse.so.0
 
-* Mon Jul  6 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-1
+* Wed Jul  6 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.35-1
 - update to 2.2.0.35
 
 * Thu Apr  7 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 2.2.0.25-1
