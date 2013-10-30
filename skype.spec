@@ -5,9 +5,9 @@ Summary:	Free Internet telephony that just works
 Name:		skype
 Version:	4.2.0.11
 %if %{defined rhel} && 0%{?rhel} < 7
-Release:	1%{?dist}
+Release:	2%{?dist}
 %else
-Release:	1.R
+Release:	2.R
 %endif
 
 Group:		Applications/Internet
@@ -15,8 +15,9 @@ License:	Proprietary
 URL:		http://www.skype.com
 Source0:	http://download.skype.com/linux/%{name}-%{version}-fedora.i586.rpm
 Source1:	%{name}.sh
+Source2:	%{name}-f20.sh
 %if %{defined rhel} && 0%{?rhel} < 7
-Source1:        http://download.skype.com/linux/%{name}_static-%{version}.tar.bz2
+Source10:        http://download.skype.com/linux/%{name}_static-%{version}.tar.bz2
 %endif
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -63,14 +64,19 @@ popd
 
 %if %{defined rhel} && 0%{?rhel} < 7
 pushd %{buildroot}
-tar xaf %{SOURCE1}
+tar xaf %{SOURCE10}
 mv %{name}_staticQT-%{version}/%{name} %{buildroot}%{_bindir}
 rm -rf %{name}_staticQT-%{version}
 popd
 %endif
 
 mv %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}-bin
-install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/%{name} 
+
+%if 0%{?fedora} < 20
+install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}
+%else
+install -m 755 %{SOURCE2} %{buildroot}%{_bindir}/%{name}
+%endif
 
 sed -i 's!Icon=skype.png!Icon=skype!g' %{buildroot}%{_datadir}/applications/%{name}.desktop
 
