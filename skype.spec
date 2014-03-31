@@ -88,6 +88,8 @@ desktop-file-install --vendor rfremix \
   --delete-original				\
   %{buildroot}%{_datadir}/applications/%{name}.desktop
 
+echo "StartupWMClass=Skype-bin" >> %{buildroot}%{_datadir}/applications/rfremix-skype.desktop
+
 mkdir -p %{buildroot}%{_libdir}
 pushd %{buildroot}%{_libdir}
 ln -sf libtiff.so.3 libtiff.so.4
