@@ -3,7 +3,7 @@
 
 Summary:	Free Internet telephony that just works
 Name:		skype
-Version:	4.2.0.13
+Version:	4.3.0.37
 %if %{defined rhel} && 0%{?rhel} < 7
 Release:	1%{?dist}
 %else
@@ -135,6 +135,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Jun 18 2014 Arkady L. Shane <ashejn@russianfedora.ru> - 4.3.0.37-1.R
+- update to 4.3.0.37
+
 * Thu Jan 30 2014 Arkady L. Shane <ashejn@russianfedora.ru> - 4.2.0.13-1.R
 - update to 4.2.0.13
 
