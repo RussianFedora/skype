@@ -5,9 +5,9 @@ Summary:	Free Internet telephony that just works
 Name:		skype
 Version:	4.3.0.37
 %if %{defined rhel} && 0%{?rhel} < 7
-Release:	1%{?dist}
+Release:	2%{?dist}
 %else
-Release:	1.R
+Release:	2.R
 %endif
 
 Group:		Applications/Internet
@@ -80,7 +80,7 @@ install -m 755 %{SOURCE2} %{buildroot}%{_bindir}/%{name}
 
 sed -i 's!Icon=skype.png!Icon=skype!g' %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-desktop-file-install --vendor rfremix \
+desktop-file-install \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications \
   --add-category Telephony			\
   --add-category Qt				\
@@ -88,7 +88,7 @@ desktop-file-install --vendor rfremix \
   --delete-original				\
   %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-echo "StartupWMClass=Skype-bin" >> %{buildroot}%{_datadir}/applications/rfremix-skype.desktop
+echo "StartupWMClass=Skype-bin" >> %{buildroot}%{_datadir}/applications/skype.desktop
 
 mkdir -p %{buildroot}%{_libdir}
 pushd %{buildroot}%{_libdir}
@@ -135,6 +135,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Jun 19 2014 Arkady L. Shane <ashejn@russianfedora.ru> - 4.3.0.37-2.R
+- GNOME Shell skype extension requires skype.desktop only
+
 * Wed Jun 18 2014 Arkady L. Shane <ashejn@russianfedora.ru> - 4.3.0.37-1.R
 - update to 4.3.0.37
 
