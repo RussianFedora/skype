@@ -7,7 +7,7 @@ Version:	4.3.0.37
 %if %{defined rhel} && 0%{?rhel} < 7
 Release:	2%{?dist}
 %else
-Release:	2.R
+Release:	3.R
 %endif
 
 Group:		Applications/Internet
@@ -29,6 +29,12 @@ Requires:	/usr/lib/libpulse.so.0
 %if %{defined rhel} && 0%{?rhel} < 7
 Requires:	/usr/lib/libtiff.so.3
 %endif
+
+# resolve http://redmine.russianfedora.pro/issues/1445
+%if 0%{?fedora} >= 21
+Requires:	sni-qt(x86-32)
+%endif
+
 
 Provides:	libtiff.so.4
 
@@ -135,6 +141,10 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Nov  8 2015 Arkady L. Shane <ashejn@russianfedora.pro> - 4.3.0.37-3.R
+- added R: sni-qt(x86-32) to
+  resolve http://redmine.russianfedora.pro/issues/1445
+
 * Thu Jun 19 2014 Arkady L. Shane <ashejn@russianfedora.ru> - 4.3.0.37-2.R
 - GNOME Shell skype extension requires skype.desktop only
 
