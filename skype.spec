@@ -7,7 +7,7 @@ Version:	4.3.0.37
 %if %{defined rhel} && 0%{?rhel} < 7
 Release:	2%{?dist}
 %else
-Release:	3.R
+Release:	3%{?dist}
 %endif
 
 Group:		Applications/Internet
