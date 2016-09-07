@@ -7,7 +7,7 @@ Version:	4.3.0.37
 %if %{defined rhel} && 0%{?rhel} < 7
 Release:	2%{?dist}
 %else
-Release:	3%{?dist}
+Release:	4%{?dist}
 %endif
 
 Group:		Applications/Internet
@@ -141,6 +141,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Sep  7 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 4.3.0.37-4
+- fix arameters handling (http://redmine.russianfedora.pro/issues/1563)
+
 * Sun Nov  8 2015 Arkady L. Shane <ashejn@russianfedora.pro> - 4.3.0.37-3.R
 - added R: sni-qt(x86-32) to
   resolve http://redmine.russianfedora.pro/issues/1445
